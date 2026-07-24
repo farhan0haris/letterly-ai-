@@ -1,0 +1,124 @@
+.result-card {
+  background: var(--color-card, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: var(--radius, 16px);
+  padding: 32px;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
+  transition: var(--transition, all 0.2s ease);
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-content-wrapper {
+  margin-bottom: 24px;
+}
+
+.letter-text {
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: 15px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: var(--color-text, #111827);
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 400px;
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-text, #111827);
+  border: none;
+  background: transparent;
+  resize: vertical;
+  outline: none;
+}
+
+.edit-textarea:focus {
+  outline: 1px dashed var(--color-primary, #4f46e5);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: var(--radius-sm, 8px);
+  padding: 8px 16px;
+  color: var(--color-text, #111827);
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition, all 0.2s ease);
+}
+
+.action-btn:hover:not(:disabled) {
+  background: var(--color-primary-light, #e0e7ff);
+  border-color: var(--color-primary-light, #e0e7ff);
+  color: var(--color-primary, #4f46e5);
+}
+
+.action-btn.active {
+  background: var(--color-primary, #4f46e5);
+  border-color: var(--color-primary, #4f46e5);
+  color: #ffffff;
+}
+
+.action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: var(--color-text-muted, #6b7280);
+  gap: 16px;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+@media (max-width: 640px) {
+  .actions-row {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .stats-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
