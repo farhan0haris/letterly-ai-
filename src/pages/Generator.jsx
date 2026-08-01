@@ -6,7 +6,7 @@ import CoverLetterResult from '../components/CoverLetterResult';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import ApiKeyModal from '../components/ApiKeyModal';
 import { generateCoverLetter } from '../services/gemini';
-import { WRITING_TONES, STORAGE_KEYS } from '../utils/constants';
+import { WRITING_TONES, STORAGE_KEYS, DEFAULT_API_KEY } from '../utils/constants';
 import { getItem, setItem, removeItem } from '../utils/storage';
 import { Sparkles, Building2, Briefcase, FileText, MessageSquare, Loader2, RotateCcw } from 'lucide-react';
 import './Generator.css';
@@ -86,7 +86,7 @@ export default function Generator() {
       return;
     }
 
-    const apiKey = getItem(STORAGE_KEYS.API_KEY) || import.meta.env.VITE_GEMINI_API_KEY;
+    const apiKey = getItem(STORAGE_KEYS.API_KEY) || DEFAULT_API_KEY;
     if (!apiKey) {
       setShowApiKeyModal(true);
       return;
