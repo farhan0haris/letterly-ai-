@@ -86,7 +86,7 @@ export default function Generator() {
       return;
     }
 
-    const apiKey = getItem(STORAGE_KEYS.API_KEY);
+    const apiKey = getItem(STORAGE_KEYS.API_KEY) || import.meta.env.VITE_GEMINI_API_KEY;
     if (!apiKey) {
       setShowApiKeyModal(true);
       return;
