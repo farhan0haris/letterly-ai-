@@ -34,7 +34,7 @@ const TechCard = ({ icon: Icon, title, description }) => (
 
 export default function About() {
   const technologies = [
-    { icon: Sparkles, title: 'Google Gemini AI', description: 'Advanced AI model for natural language generation and understanding.' },
+    { icon: Sparkles, title: 'Groq AI (Llama 3.3)', description: 'Ultra-fast AI inference for natural language generation and understanding.' },
     { icon: Code, title: 'React + Vite', description: 'Modern frontend framework with lightning-fast build tool.' },
     { icon: Palette, title: 'Star Wars Modern Theme', description: 'Galactic professional UI with responsive light & dark mode support.' },
     { icon: BrainCircuit, title: 'Prompt Engineering', description: 'Carefully crafted prompts to generate high-quality cover letters.' },
@@ -53,7 +53,7 @@ export default function About() {
           </h1>
           <div className="content-card">
             <p className="about-description">
-              Letterly AI is an intelligent cover letter generator that leverages Google Gemini AI to create personalized, ATS-friendly cover letters. Simply upload your resume, paste the job description, and let AI do the heavy lifting.
+              Letterly AI is an intelligent cover letter generator that leverages Groq AI to create personalized, ATS-friendly cover letters. Simply upload your resume, paste the job description, and let AI do the heavy lifting.
             </p>
             <p className="about-note">
               Designed and developed with a focus on practical AI application, responsive frontend architecture, and modern UX design principles.
@@ -131,7 +131,7 @@ export default function About() {
               </div>
               <div className="info-item">
                 <span className="info-label">AI Model</span>
-                <span className="info-value">Google Gemini AI</span>
+                <span className="info-value">Groq AI — Llama 3.3 70B</span>
               </div>
               <div className="info-item">
                 <span className="info-label">Architecture</span>

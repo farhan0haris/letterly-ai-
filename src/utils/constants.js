@@ -1,6 +1,6 @@
 export const APP_NAME = 'Letterly AI';
 export const APP_TAGLINE = 'Generate ATS-Friendly Cover Letters in Seconds with AI';
-export const DEFAULT_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
+export const DEFAULT_API_KEY = import.meta.env.VITE_GROQ_API_KEY || '';
 
 export const WRITING_TONES = [
   { value: 'professional', label: 'Professional', description: 'Balanced and business-appropriate' },

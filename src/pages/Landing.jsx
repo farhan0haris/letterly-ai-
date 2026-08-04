@@ -69,7 +69,7 @@ export default function Landing() {
   }, []);
 
   const features = [
-    { icon: Sparkles, title: 'AI Powered', description: 'Leverage Google Gemini AI to craft personalized cover letters tailored to each job application.' },
+    { icon: Sparkles, title: 'AI Powered', description: 'Leverage Groq AI with Llama 3.3 to craft personalized cover letters tailored to each job application.' },
     { icon: Target, title: 'ATS Friendly', description: 'Optimized formatting and keywords to pass Applicant Tracking Systems with ease.' },
     { icon: PenTool, title: 'Professional Writing', description: 'Choose from multiple writing tones to match your style and the company culture.' },
     { icon: Download, title: 'PDF Export', description: 'Download your cover letter as a professionally formatted PDF ready to submit.' },
@@ -84,11 +84,11 @@ export default function Landing() {
   ];
 
   const faqs = [
-    { question: 'How does Letterly AI generate cover letters?', answer: 'Letterly AI uses Google Gemini AI to analyze your resume and the job description, then generates a personalized cover letter that highlights your most relevant skills and experience.' },
+    { question: 'How does Letterly AI generate cover letters?', answer: 'Letterly AI uses Groq AI to analyze your resume and the job description, then generates a personalized cover letter that highlights your most relevant skills and experience.' },
     { question: 'Is my data safe?', answer: 'Absolutely. All processing happens in your browser. Your resume and data are never stored on any server. Your API key is stored locally in your browser only.' },
     { question: 'What file formats are supported?', answer: 'Letterly AI supports PDF, DOCX, and TXT resume formats. We recommend PDF for best results.' },
     { question: 'Can I edit the generated cover letter?', answer: 'Yes! You can edit the generated cover letter directly in the app, then download the edited version as a PDF.' },
-    { question: 'Do I need a Google Gemini API key?', answer: 'Yes, you need a free API key from Google AI Studio. The app will guide you through getting one when you first use it.' }
+    { question: 'Do I need an API key?', answer: 'No! Letterly AI works out of the box with a built-in API key. Advanced users can optionally provide their own Groq API key.' }
   ];
 
   const handleScrollToFeatures = (e) => {

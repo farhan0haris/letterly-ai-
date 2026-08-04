@@ -44,9 +44,9 @@ const ApiKeyModal = ({ isOpen, onClose, onSave }) => {
   return (
     <div className="modal-overlay" onClick={handleBackdropClick}>
       <div className="modal-card">
-        <h2 className="modal-title">Enter Your Gemini API Key</h2>
+        <h2 className="modal-title">Enter Your Groq API Key</h2>
         <p className="modal-description">
-          Your API key is stored locally in your browser and never sent to any server other than Google.
+          Your API key is stored locally in your browser and never sent to any server other than Groq.
         </p>
         
         <div className="input-group">
@@ -54,7 +54,7 @@ const ApiKeyModal = ({ isOpen, onClose, onSave }) => {
             ref={inputRef}
             type={showKey ? 'text' : 'password'}
             className="api-key-input"
-            placeholder="AIzaSy..."
+            placeholder="gsk_..."
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
           />
@@ -69,12 +69,12 @@ const ApiKeyModal = ({ isOpen, onClose, onSave }) => {
         </div>
         
         <a 
-          href="https://aistudio.google.com/apikey" 
+          href="https://console.groq.com/keys" 
           target="_blank" 
           rel="noopener noreferrer"
           className="get-key-link"
         >
-          Get your free API key from Google AI Studio
+          Get your free API key from Groq Console
         </a>
         
         <div className="modal-actions">

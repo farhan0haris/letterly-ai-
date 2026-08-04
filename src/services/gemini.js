@@ -1,22 +1,24 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
 import { generatePrompt } from '../utils/constants';
 
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+
 /**
- * Parses Google Generative AI errors into clean, user-friendly messages.
+ * Parses Groq API errors into clean, user-friendly messages.
  */
 const getCleanErrorMessage = (error) => {
   const msg = error?.message || String(error);
 
-  if (msg.includes('quota') || msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED')) {
+  if (msg.includes('rate_limit') || msg.includes('429') || msg.includes('quota')) {
     return 'You have exceeded the free API rate limit. Please wait 1-2 minutes and try again.';
   }
-  if (msg.includes('API_KEY_INVALID') || msg.includes('401') || msg.includes('UNAUTHENTICATED')) {
-    return 'Your API key is invalid. Please check your key or generate a new one at aistudio.google.com/apikey';
+  if (msg.includes('invalid_api_key') || msg.includes('401') || msg.includes('Unauthorized')) {
+    return 'Your API key is invalid. Please check your key or generate a new one at console.groq.com';
   }
-  if (msg.includes('PERMISSION_DENIED') || msg.includes('403')) {
-    return 'API key does not have permission. Please generate a new key at aistudio.google.com/apikey';
+  if (msg.includes('403') || msg.includes('permission')) {
+    return 'API key does not have permission. Please generate a new key at console.groq.com';
   }
-  if (msg.includes('SAFETY') || msg.includes('blocked')) {
+  if (msg.includes('safety') || msg.includes('blocked') || msg.includes('content_filter')) {
     return 'The AI flagged the content. Please adjust your resume or job description and try again.';
   }
   if (msg.includes('fetch') || msg.includes('network') || msg.includes('Failed to fetch')) {
@@ -30,20 +32,45 @@ const getCleanErrorMessage = (error) => {
 };
 
 export const generateCoverLetter = async (apiKey, resumeText, jobDescription, companyName, position, tone) => {
-  if (!apiKey) throw new Error('API key is required. Please add your Gemini API key.');
+  if (!apiKey) throw new Error('API key is required. Please add your Groq API key.');
   if (!resumeText) throw new Error('Please upload your resume.');
   if (!jobDescription) throw new Error('Please enter the job description.');
   if (!companyName) throw new Error('Please enter the company name.');
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-
     const prompt = generatePrompt(resumeText, jobDescription, companyName, position, tone);
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    const response = await fetch(GROQ_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages: [
+          {
+            role: 'system',
+            content: 'You are an experienced HR recruiter and career consultant. Generate only the finished cover letter. Do not include any explanations, notes, or metadata.'
+          },
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 1024,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      const errorMsg = errorData?.error?.message || `API request failed with status ${response.status}`;
+      throw new Error(errorMsg);
+    }
+
+    const data = await response.json();
+    const text = data?.choices?.[0]?.message?.content;
 
     if (!text) throw new Error('Empty response from AI.');
 
