@@ -101,6 +101,39 @@ export default function Landing() {
       <section className="hero-section fade-in">
         <div className="hero-decor decor-1"></div>
         <div className="hero-decor decor-2"></div>
+
+        {/* 3D Floating Artifacts */}
+        <div className="hero-3d-scene" aria-hidden="true">
+          {/* Rotating Cube */}
+          <div className="artifact artifact-cube">
+            <div className="cube">
+              <div className="cube-face cube-front"></div>
+              <div className="cube-face cube-back"></div>
+              <div className="cube-face cube-left"></div>
+              <div className="cube-face cube-right"></div>
+              <div className="cube-face cube-top"></div>
+              <div className="cube-face cube-bottom"></div>
+            </div>
+          </div>
+
+          {/* Floating Diamond */}
+          <div className="artifact artifact-diamond">
+            <div className="diamond"></div>
+          </div>
+
+          {/* Orbiting Ring */}
+          <div className="artifact artifact-ring">
+            <div className="ring"></div>
+          </div>
+
+          {/* Small floating orbs */}
+          <div className="artifact artifact-orb orb-1"></div>
+          <div className="artifact artifact-orb orb-2"></div>
+          <div className="artifact artifact-orb orb-3"></div>
+          <div className="artifact artifact-orb orb-4"></div>
+          <div className="artifact artifact-orb orb-5"></div>
+        </div>
+
         <div className="hero-content">
           <h1 className="hero-heading">
             Write Better Cover Letters with <span className="gradient-text">AI</span>
