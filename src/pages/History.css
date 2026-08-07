@@ -133,16 +133,25 @@
 }
 
 .close-btn {
-  background: none;
+  background: transparent;
   border: none;
   color: var(--color-text-muted);
   cursor: pointer;
-  padding: 4px;
-  transition: all 0.2s ease-out;
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .close-btn:hover {
+  background: var(--color-bg-secondary);
   color: var(--color-text);
+}
+
+.close-btn:active {
+  transform: scale(0.92);
 }
 
 .modal-body {

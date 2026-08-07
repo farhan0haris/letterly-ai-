@@ -92,6 +92,16 @@
   color: var(--color-text);
   cursor: pointer;
   padding: 8px;
+  border-radius: 10px;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--color-bg-secondary);
+}
+
+.mobile-menu-btn:active {
+  transform: scale(0.92);
 }
 
 @media (max-width: 768px) {
