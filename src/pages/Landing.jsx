@@ -46,6 +46,8 @@ const FAQItem = ({ question, answer }) => {
 
 export default function Landing() {
   const observerRef = useRef(null);
+  const today = new Date();
+  const isMay4th = today.getMonth() === 4 && today.getDate() === 4;
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
@@ -102,7 +104,15 @@ export default function Landing() {
         <div className="hero-decor decor-1"></div>
         <div className="hero-decor decor-2"></div>
 
-
+        <div className="falcon-container" aria-hidden="true">
+          <svg viewBox="0 0 100 100" className="millennium-falcon" fill="currentColor">
+            <circle cx="50" cy="55" r="25" />
+            <path d="M35 35 L42 10 L48 10 L48 35 Z" />
+            <path d="M65 35 L58 10 L52 10 L52 35 Z" />
+            <rect x="70" y="40" width="12" height="6" rx="3" transform="rotate(20 70 40)" />
+            <path d="M30 72 Q 50 82 70 72" fill="none" stroke="var(--color-accent)" strokeWidth="3" filter="blur(1px)"/>
+          </svg>
+        </div>
 
         <div className="hero-content">
           <h1 className="hero-heading">
@@ -110,6 +120,9 @@ export default function Landing() {
           </h1>
           <p className="hero-subheading">
             Upload your resume, paste the job description, and let AI create a personalized ATS-friendly cover letter in seconds.
+            {isMay4th && (
+              <span className="may-4th-text"> May the Force be with your career.</span>
+            )}
           </p>
           <div className="hero-buttons">
             <Link to="/generator" className="btn btn-primary btn-lg">Get Started</Link>

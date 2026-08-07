@@ -4,6 +4,49 @@
   padding-bottom: 80px;
   min-height: 100vh;
   background-color: var(--color-bg);
+  position: relative;
+}
+
+/* Hyperspace Overlay */
+.hyperspace-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.15;
+}
+
+[data-theme='dark'] .hyperspace-overlay {
+  opacity: 0.35;
+}
+
+.streak {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  height: 2px;
+  width: 150px;
+  border-radius: 2px;
+  filter: blur(1px);
+  animation: hyperspace 2s linear infinite;
+  opacity: 0;
+}
+
+.streak-1 { top: 20%; left: -200px; animation-duration: 1.5s; animation-delay: 0s; }
+.streak-2 { top: 40%; left: -200px; animation-duration: 2.2s; animation-delay: 0.5s; }
+.streak-3 { top: 60%; left: -200px; animation-duration: 1.8s; animation-delay: 0.2s; }
+.streak-4 { top: 80%; left: -200px; animation-duration: 2.5s; animation-delay: 0.8s; }
+.streak-5 { top: 30%; left: -200px; animation-duration: 1.6s; animation-delay: 1.2s; }
+
+@keyframes hyperspace {
+  0% { transform: translateX(0) scaleX(1); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(120vw) scaleX(3); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hyperspace-overlay { display: none; }
 }
 
 .generator-container {

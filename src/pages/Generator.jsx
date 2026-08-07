@@ -150,6 +150,15 @@ export default function Generator() {
 
   return (
     <div className="generator-page">
+      {isGenerating && (
+        <div className="hyperspace-overlay" aria-hidden="true">
+          <div className="streak streak-1"></div>
+          <div className="streak streak-2"></div>
+          <div className="streak streak-3"></div>
+          <div className="streak streak-4"></div>
+          <div className="streak streak-5"></div>
+        </div>
+      )}
       <div className="generator-container">
         <h1 className="page-title">
           <Sparkles className="title-icon" size={32} />

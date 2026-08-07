@@ -134,3 +134,24 @@
     z-index: 999;
   }
 }
+
+/* Easter Egg */
+.navbar-easter-egg {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  color: var(--color-text);
+  z-index: 1000;
+  pointer-events: none;
+  animation: flyAcross 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes flyAcross {
+  0% { transform: translate(0, -50%) rotate(90deg) scale(0.5); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate(110vw, -50%) rotate(90deg) scale(0.5); opacity: 0; }
+}
