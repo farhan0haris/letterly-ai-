@@ -2,7 +2,7 @@
 
 Generate ATS-friendly, personalized cover letters in seconds using Groq AI.
 
-![Design](https://img.shields.io/badge/Design-Apple%20HIG%20Inspired-000000?style=for-the-badge&logo=apple&logoColor=white)
+![Design](https://img.shields.io/badge/Design-Premium%20UI%2FUX-000000?style=for-the-badge&logoColor=white)
 ![Privacy First](https://img.shields.io/badge/Security-Privacy%20First%20100%25-10B981?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-38BDF8?style=for-the-badge)
 
@@ -11,7 +11,7 @@ Generate ATS-friendly, personalized cover letters in seconds using Groq AI.
 ## ✨ Features
 
 - **AI-Powered Generation**: Leverages Groq AI (Llama 3.3 70B) to analyze your resume and tailor a cover letter to any job description.
-- **Premium Design System**: A handcrafted, elegant UI inspired by Apple's Human Interface Guidelines (HIG). Features soft shadows, precise spacing, and smooth micro-interactions.
+- **Premium Design System**: A handcrafted, elegant UI featuring soft shadows, precise spacing, and smooth micro-interactions.
 - **Subtle Star Wars Theming**: Includes hidden, premium easter eggs inspired by the Star Wars universe for observant users to discover.
 - **ATS Optimized**: Tailored keyword matching and formatting built to pass Applicant Tracking Systems.
 - **Custom Writing Tones**: Choose between Professional, Formal, Friendly, Confident, or Concise.
