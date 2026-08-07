@@ -8,6 +8,7 @@ export const WRITING_TONES = [
   { value: 'friendly', label: 'Friendly', description: 'Warm and approachable' },
   { value: 'confident', label: 'Confident', description: 'Bold and assertive' },
   { value: 'concise', label: 'Concise', description: 'Brief and to the point' },
+  { value: 'jedi', label: 'Jedi Mind Trick', description: 'Highly persuasive and subtly humorous' },
 ];
 
 export const ACCEPTED_FILE_TYPES = {
@@ -23,7 +24,7 @@ export const generatePrompt = (resumeText, jobDescription, companyName, position
 
 Read the uploaded resume carefully.
 Read the provided job description.
-Generate a personalized cover letter.
+Generate a personalized cover letter, interview prep questions, and keyword matches.
 
 Candidate Resume:
 ---
@@ -39,24 +40,32 @@ Company: ${companyName}
 Position: ${position}
 Writing Tone: ${tone}
 
-Rules:
-- Never invent skills.
-- Never invent work experience.
-- Never invent projects.
+Rules for Cover Letter:
+- Never invent skills, work experience, or projects.
 - Never exaggerate achievements.
 - Use only information available inside the uploaded resume.
 - Match the candidate with the job description.
 - Maintain the selected writing tone: ${tone}.
 - Keep between 250 and 350 words.
+- Include: Professional Greeting, Opening Paragraph, Skills Alignment, Why Candidate Fits, Professional Closing.
 
-Include:
-- Professional Greeting
-- Opening Paragraph
-- Skills Alignment
-- Why Candidate Fits
-- Professional Closing
+Rules for Output:
+You must return ONLY a valid JSON object with the following exact structure:
+{
+  "coverLetter": "The complete cover letter text...",
+  "interviewQuestions": [
+    "Question 1 based on their resume gap...",
+    "Question 2...",
+    "Question 3..."
+  ],
+  "matchedKeywords": [
+    "Keyword 1 from JD found in Resume",
+    "Keyword 2",
+    "Keyword 3"
+  ]
+}
 
-Return only the finished cover letter. Do not include any explanations, notes, or metadata.`;
+Ensure the response is valid, parseable JSON. Do not include markdown formatting like \`\`\`json or any other text before or after the JSON.`;
 };
 
 export const STORAGE_KEYS = {

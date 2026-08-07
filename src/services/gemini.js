@@ -51,7 +51,7 @@ export const generateCoverLetter = async (apiKey, resumeText, jobDescription, co
         messages: [
           {
             role: 'system',
-            content: 'You are an experienced HR recruiter and career consultant. Generate only the finished cover letter. Do not include any explanations, notes, or metadata.'
+            content: 'You are an experienced HR recruiter and career consultant. Output your response strictly in the requested JSON format.'
           },
           {
             role: 'user',
@@ -60,6 +60,7 @@ export const generateCoverLetter = async (apiKey, resumeText, jobDescription, co
         ],
         temperature: 0.7,
         max_tokens: 1024,
+        response_format: { type: 'json_object' }
       }),
     });
 
@@ -73,8 +74,19 @@ export const generateCoverLetter = async (apiKey, resumeText, jobDescription, co
     const text = data?.choices?.[0]?.message?.content;
 
     if (!text) throw new Error('Empty response from AI.');
-
-    return text.trim();
+    
+    try {
+      const parsed = JSON.parse(text);
+      return parsed;
+    } catch (e) {
+      // Fallback if AI somehow fails to return valid JSON
+      console.error('Failed to parse AI response as JSON:', text);
+      return {
+        coverLetter: text.trim(),
+        interviewQuestions: [],
+        matchedKeywords: []
+      };
+    }
   } catch (error) {
     throw new Error(getCleanErrorMessage(error));
   }

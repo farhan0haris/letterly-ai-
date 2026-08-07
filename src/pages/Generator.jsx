@@ -8,7 +8,8 @@ import ApiKeyModal from '../components/ApiKeyModal';
 import { generateCoverLetter } from '../services/gemini';
 import { WRITING_TONES, STORAGE_KEYS, DEFAULT_API_KEY } from '../utils/constants';
 import { getItem, setItem, removeItem } from '../utils/storage';
-import { Sparkles, Building2, Briefcase, FileText, MessageSquare, Loader2, RotateCcw } from 'lucide-react';
+import { Sparkles, Building2, Briefcase, FileText, MessageSquare, Loader2, RotateCcw, Link as LinkIcon } from 'lucide-react';
+import { playButtonSound, playSuccessSound } from '../utils/soundDesign';
 import './Generator.css';
 
 export default function Generator() {
@@ -24,6 +25,9 @@ export default function Generator() {
   const [result, setResult] = useState('');
   const [generationTime, setGenerationTime] = useState(null);
   const [showApiKeyModal, setShowApiKeyModal] = useState(false);
+  const [jobUrl, setJobUrl] = useState('');
+  const [isScraping, setIsScraping] = useState(false);
+  const [loadingText, setLoadingText] = useState('Generating your cover letter...');
 
   const { addToast } = useToast();
   const { addToHistory } = useHistory();
@@ -54,6 +58,7 @@ export default function Generator() {
   };
 
   const clearForm = () => {
+    playButtonSound();
     setFormData({
       companyName: '',
       hiringPosition: '',
@@ -67,6 +72,47 @@ export default function Generator() {
     removeItem(STORAGE_KEYS.FORM_DATA);
     addToast('Form cleared', 'info');
   };
+
+  const handleScrapeUrl = async () => {
+    if (!jobUrl) return;
+    playButtonSound();
+    setIsScraping(true);
+    try {
+      const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(jobUrl)}`);
+      const data = await res.json();
+      if (data.contents) {
+        const text = data.contents.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+        setFormData(prev => ({ ...prev, jobDescription: text.substring(0, 3000) }));
+        addToast('Job description extracted!', 'success');
+        setJobUrl('');
+      } else {
+        throw new Error('No content');
+      }
+    } catch (err) {
+      addToast('Failed to extract job details. Please paste manually.', 'error');
+    } finally {
+      setIsScraping(false);
+    }
+  };
+
+  useEffect(() => {
+    let interval;
+    if (isGenerating) {
+      const phrases = [
+        'Analyzing Job Requirements...',
+        'Cross-referencing Resume Skills...',
+        'Applying Professional Tone...',
+        'Finalizing Document...'
+      ];
+      let i = 0;
+      setLoadingText(phrases[0]);
+      interval = setInterval(() => {
+        i = (i + 1) % phrases.length;
+        setLoadingText(phrases[i]);
+      }, 2500);
+    }
+    return () => clearInterval(interval);
+  }, [isGenerating]);
 
   const handleGenerate = async () => {
     if (!resumeText) {
@@ -93,12 +139,13 @@ export default function Generator() {
     }
 
     setIsGenerating(true);
+    playButtonSound();
     setResult('');
     setGenerationTime(null);
 
     try {
       const startTime = Date.now();
-      const generatedLetter = await generateCoverLetter(
+      const responseObj = await generateCoverLetter(
         apiKey,
         resumeText,
         formData.jobDescription,
@@ -108,13 +155,14 @@ export default function Generator() {
       );
 
       const timeElapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-      setResult(generatedLetter);
+      setResult(responseObj);
       setGenerationTime(`${timeElapsed}s`);
+      playSuccessSound();
 
       addToHistory({
         company: formData.companyName,
         position: formData.hiringPosition,
-        content: generatedLetter,
+        content: responseObj.coverLetter,
         tone: formData.tone,
         generationTime: `${timeElapsed}s`,
         date: new Date().toISOString()
@@ -198,6 +246,24 @@ export default function Generator() {
 
           <div className="input-group">
             <label><FileText size={16} /> Job Description <span className="required">*</span></label>
+            <div className="url-scraper-row">
+              <input 
+                type="url" 
+                placeholder="Or paste job posting URL to auto-extract..." 
+                value={jobUrl}
+                onChange={(e) => setJobUrl(e.target.value)}
+                disabled={isScraping}
+              />
+              <button 
+                type="button" 
+                className="btn btn-outline" 
+                onClick={handleScrapeUrl}
+                disabled={!jobUrl || isScraping}
+              >
+                {isScraping ? <Loader2 size={16} className="spin" /> : <LinkIcon size={16} />}
+                {isScraping ? 'Extracting...' : 'Extract'}
+              </button>
+            </div>
             <textarea
               name="jobDescription"
               value={formData.jobDescription}
@@ -224,7 +290,7 @@ export default function Generator() {
               aria-label="Generate cover letter"
             >
               {isGenerating ? <Loader2 className="spin" size={20} /> : <Sparkles size={20} />}
-              {isGenerating ? 'Generating your cover letter...' : 'Generate Cover Letter'}
+              {isGenerating ? loadingText : 'Generate Cover Letter'}
             </button>
             <button className="btn btn-outline btn-clear" onClick={clearForm} aria-label="Clear form">
               <RotateCcw size={18} />
