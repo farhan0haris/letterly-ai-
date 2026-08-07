@@ -1,45 +1,44 @@
 .footer {
-  background: var(--color-bg-secondary, var(--color-bg));
+  background: var(--color-bg);
   border-top: 1px solid var(--color-border);
-  padding: 32px;
-  width: 100%;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 24px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  transition: background-color 0.2s ease-out, border-color 0.2s ease-out;
 }
 
 .footer-copy {
+  font-size: 0.875rem;
   color: var(--color-text-muted);
-  font-size: 0.9rem;
 }
 
 .footer-socials {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .social-icon {
-  width: 20px;
-  height: 20px;
   color: var(--color-text-muted);
-  transition: color 0.2s ease, transform 0.2s ease;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: color 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-icon:hover {
-  color: var(--color-primary);
-  transform: translateY(-2px);
+  color: var(--color-text);
+  transform: none; /* NO translateY on hover */
 }
 
 @media (max-width: 768px) {
-  .footer-container {
+  .footer {
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
+    padding: 24px 16px;
     text-align: center;
   }
 }

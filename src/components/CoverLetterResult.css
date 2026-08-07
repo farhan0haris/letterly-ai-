@@ -1,14 +1,18 @@
 .result-card {
-  background: var(--color-card, #ffffff);
-  border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: var(--radius, 16px);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
   padding: 32px;
-  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.05));
-  transition: var(--transition, all 0.2s ease);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-out;
+}
+
+[data-theme='dark'] .result-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .fade-in {
-  animation: fadeIn 0.4s ease-in-out;
+  animation: fadeIn 0.25s ease-out;
 }
 
 @keyframes fadeIn {
@@ -21,30 +25,33 @@
 }
 
 .letter-text {
-  font-family: var(--font-family, 'Inter', sans-serif);
+  font-family: inherit;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.85;
   white-space: pre-wrap;
-  color: var(--color-text, #111827);
+  color: var(--color-text);
 }
 
 .edit-textarea {
   width: 100%;
   min-height: 400px;
-  font-family: var(--font-family, 'Inter', sans-serif);
+  font-family: inherit;
   font-size: 15px;
-  line-height: 1.8;
-  color: var(--color-text, #111827);
+  line-height: 1.85;
+  color: var(--color-text);
   border: none;
   background: transparent;
   resize: vertical;
   outline: none;
+  transition: all 0.2s ease-out;
 }
 
 .edit-textarea:focus {
-  outline: 1px dashed var(--color-primary, #4f46e5);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm, 8px);
+  outline: 1px solid var(--color-primary);
+  outline-offset: 0;
+  border-radius: 10px;
+  padding: 12px;
+  background-color: var(--color-bg-secondary);
 }
 
 .actions-row {
@@ -59,27 +66,25 @@
   align-items: center;
   gap: 6px;
   background: transparent;
-  border: 1px solid var(--color-border, #e5e7eb);
-  border-radius: var(--radius-sm, 8px);
-  padding: 8px 16px;
-  color: var(--color-text, #111827);
-  font-family: var(--font-family, 'Inter', sans-serif);
-  font-size: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 8px 14px;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition, all 0.2s ease);
+  transition: all 0.2s ease-out;
 }
 
 .action-btn:hover:not(:disabled) {
-  background: var(--color-primary-light, #e0e7ff);
-  border-color: var(--color-primary-light, #e0e7ff);
-  color: var(--color-primary, #4f46e5);
+  background: var(--color-bg-secondary);
 }
 
 .action-btn.active {
-  background: var(--color-primary, #4f46e5);
-  border-color: var(--color-primary, #4f46e5);
-  color: #ffffff;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
 }
 
 .action-btn:disabled {
@@ -91,15 +96,11 @@
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-
 .stats-row {
   display: flex;
   align-items: center;
-  font-size: 13px;
-  color: var(--color-text-muted, #6b7280);
+  font-size: 12px;
+  color: var(--color-text-muted);
   gap: 16px;
 }
 

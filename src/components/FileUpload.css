@@ -6,32 +6,40 @@
 }
 
 .file-upload-zone {
-  border: 2px dashed var(--color-border);
-  border-radius: var(--radius);
-  padding: 48px;
+  border: 1.5px dashed var(--color-border);
+  border-radius: 18px;
+  padding: 40px;
   text-align: center;
   cursor: pointer;
-  transition: all var(--transition, 0.3s ease);
-  background: var(--color-card);
+  transition: all 0.2s ease-out;
+  background: var(--color-bg-secondary);
   position: relative;
   overflow: hidden;
 }
 
 .file-upload-zone:hover:not(.file-selected) {
   border-color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.05);
+  background: rgba(217, 119, 6, 0.03);
+}
+
+[data-theme='dark'] .file-upload-zone:hover:not(.file-selected) {
+  background: rgba(245, 158, 11, 0.03);
 }
 
 .file-upload-zone.drag-active {
   border-color: var(--color-primary);
-  background: rgba(var(--color-primary-rgb, 59, 130, 246), 0.1);
+  background: rgba(217, 119, 6, 0.05);
+}
+
+[data-theme='dark'] .file-upload-zone.drag-active {
+  background: rgba(245, 158, 11, 0.05);
 }
 
 .file-upload-zone.file-selected {
-  border: 2px solid #10b981;
-  background: rgba(16, 185, 129, 0.05);
+  border: 1.5px solid var(--color-success);
+  background: rgba(52, 199, 89, 0.04);
   cursor: default;
-  padding: 24px;
+  padding: 20px;
 }
 
 .file-upload-content {
@@ -42,14 +50,14 @@
 }
 
 .upload-icon {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   color: var(--color-text-muted);
   margin-bottom: 8px;
 }
 
 .upload-main-text {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--color-text);
   margin: 0;
@@ -81,7 +89,7 @@
 }
 
 .success-icon {
-  color: #10b981;
+  color: var(--color-success);
   width: 32px;
   height: 32px;
 }
@@ -108,16 +116,16 @@
   color: var(--color-text-muted);
   cursor: pointer;
   padding: 8px;
-  border-radius: 50%;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s ease-out;
 }
 
 .remove-btn:hover {
   background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  color: var(--color-error);
 }
 
 .file-processing-content {
@@ -125,13 +133,15 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-out;
 }
 
 .processing-icon {
   color: var(--color-primary);
   width: 32px;
   height: 32px;
-  animation: pulse 1.5s infinite;
+  animation: spin 1s linear infinite;
 }
 
 .processing-text {
@@ -142,7 +152,7 @@
 .progress-bar-container {
   width: 100%;
   max-width: 300px;
-  height: 4px;
+  height: 3px;
   background: var(--color-border);
   border-radius: 2px;
   overflow: hidden;
@@ -151,20 +161,14 @@
 .progress-bar {
   height: 100%;
   background: var(--color-primary);
-  transition: width 0.3s ease;
+  transition: width 0.2s ease-out;
 }
 
 .file-error-message {
-  color: #ef4444;
+  color: var(--color-error);
   font-size: 0.875rem;
   font-weight: 500;
   text-align: center;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
 }
 
 @media (max-width: 768px) {

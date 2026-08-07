@@ -1,16 +1,21 @@
 .skeleton-container {
   padding: 32px;
   background: var(--color-card);
-  border-radius: var(--radius);
+  border-radius: 18px;
   border: 1px solid var(--color-border);
   width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme='dark'] .skeleton-container {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .skeleton-line {
-  height: 16px;
-  background: var(--color-border);
-  border-radius: 8px;
-  margin-bottom: 12px;
+  height: 14px;
+  background: var(--color-bg-secondary);
+  border-radius: 7px;
+  margin-bottom: 14px;
   position: relative;
   overflow: hidden;
 }
@@ -42,8 +47,8 @@
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 20%,
-    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.06) 60%,
     rgba(255, 255, 255, 0) 100%
   );
 }

@@ -1,24 +1,25 @@
 /* About.css */
 .about-page {
-  padding-top: calc(var(--navbar-height, 72px) + 48px);
+  padding-top: calc(var(--navbar-height) + 48px);
   padding-bottom: 80px;
   min-height: 100vh;
   background-color: var(--color-bg);
 }
 
 .about-container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .about-section {
-  margin-bottom: 64px;
+  margin-bottom: 56px;
 }
 
 .section-heading {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 24px;
   color: var(--color-text);
   display: flex;
@@ -33,13 +34,13 @@
 .content-card, .dev-card, .project-card {
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 32px;
+  border-radius: 18px;
+  padding: 28px 32px;
   box-shadow: var(--shadow-sm);
 }
 
 .about-description {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--color-text);
   margin-bottom: 16px;
@@ -54,33 +55,33 @@
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 16px;
 }
 
 .tech-card {
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 24px;
+  border-radius: 14px;
+  padding: 20px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .tech-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   border-color: var(--color-primary);
 }
 
 .tech-icon-wrapper {
   display: inline-flex;
-  padding: 12px;
+  padding: 10px;
   background-color: var(--color-primary-light);
   color: var(--color-primary);
-  border-radius: 50%;
+  border-radius: 10px;
   align-self: flex-start;
 }
 
@@ -109,14 +110,13 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), #38BDF8);
-  color: #090D16;
-  font-weight: 800;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-weight: 700;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px var(--color-primary-light);
   letter-spacing: 1px;
 }
 
@@ -134,10 +134,10 @@
 }
 
 .dev-feedback-box {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-primary);
-  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-primary);
+  border-radius: 10px;
   padding: 20px;
   margin-bottom: 24px;
 }
@@ -173,14 +173,14 @@
   gap: 16px;
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
+  border-radius: 12px;
   padding: 16px 20px;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease-out;
 }
 
 .contact-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: var(--color-primary);
   box-shadow: var(--shadow-sm);
 }
@@ -188,7 +188,7 @@
 .contact-icon {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,7 +235,7 @@
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .info-item {
@@ -272,7 +272,7 @@
 
 @media (max-width: 768px) {
   .about-page {
-    padding-top: calc(var(--navbar-height, 72px) + 24px);
+    padding-top: calc(var(--navbar-height) + 24px);
   }
   .about-section {
     margin-bottom: 48px;

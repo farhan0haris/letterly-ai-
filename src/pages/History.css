@@ -1,13 +1,13 @@
 /* History.css */
 .history-page {
-  padding-top: calc(var(--navbar-height, 64px) + 48px);
+  padding-top: calc(var(--navbar-height) + 48px);
   padding-bottom: 80px;
   min-height: 100vh;
   background-color: var(--color-bg);
 }
 
 .history-container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -17,13 +17,13 @@
 }
 
 .count-badge {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
   font-weight: normal;
   margin-left: 16px;
   background-color: var(--color-bg-secondary);
-  padding: 4px 12px;
-  border-radius: 999px;
+  padding: 3px 10px;
+  border-radius: 99px;
   border: 1px solid var(--color-border);
 }
 
@@ -42,13 +42,13 @@
 
 .search-input {
   width: 100%;
-  padding: 14px 16px 14px 48px;
+  padding: 12px 16px 12px 44px;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-card);
+  border-radius: 10px;
+  background-color: var(--color-bg-secondary);
   color: var(--color-text);
   font-size: 15px;
-  transition: var(--transition);
+  transition: all 0.2s ease-out;
 }
 
 .search-input:focus {
@@ -65,11 +65,11 @@
 
 .history-empty-state, .empty-search-state {
   text-align: center;
-  padding: 80px 24px;
+  padding: 64px 24px;
   color: var(--color-text-muted);
   background-color: var(--color-card);
   border: 1px dashed var(--color-border);
-  border-radius: var(--radius);
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,21 +103,23 @@
   justify-content: center;
   z-index: 1000;
   padding: 24px;
+  transition: all 0.2s ease-out;
 }
 
 .full-view-modal {
   background-color: var(--color-card);
-  border-radius: var(--radius);
+  border-radius: 18px;
   width: 100%;
   max-width: 700px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-lg);
+  transition: all 0.2s ease-out;
 }
 
 .modal-header {
-  padding: 24px;
+  padding: 20px 24px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
@@ -136,6 +138,7 @@
   color: var(--color-text-muted);
   cursor: pointer;
   padding: 4px;
+  transition: all 0.2s ease-out;
 }
 
 .close-btn:hover {
@@ -152,13 +155,13 @@
   white-space: pre-wrap;
   font-family: var(--font-family);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 1.85;
   color: var(--color-text);
   margin: 0;
 }
 
 .modal-footer {
-  padding: 24px;
+  padding: 16px 24px;
   border-top: 1px solid var(--color-border);
   display: flex;
   justify-content: flex-end;
@@ -167,7 +170,7 @@
 
 @media (max-width: 768px) {
   .history-page {
-    padding-top: calc(var(--navbar-height, 64px) + 24px);
+    padding-top: calc(var(--navbar-height) + 24px);
   }
   .page-title {
     flex-wrap: wrap;
