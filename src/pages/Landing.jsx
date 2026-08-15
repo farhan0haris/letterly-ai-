@@ -130,15 +130,60 @@ export default function Landing() {
       <section className="hero-section fade-in">
         <div className="hero-decor decor-1"></div>
         <div className="hero-decor decor-2"></div>
+        <div className="hero-decor decor-3"></div>
 
-        <div className="falcon-container" aria-hidden="true">
-          <svg viewBox="0 0 100 100" className="millennium-falcon" fill="currentColor">
-            <circle cx="50" cy="55" r="25" />
-            <path d="M35 35 L42 10 L48 10 L48 35 Z" />
-            <path d="M65 35 L58 10 L52 10 L52 35 Z" />
-            <rect x="70" y="40" width="12" height="6" rx="3" transform="rotate(20 70 40)" />
-            <path d="M30 72 Q 50 82 70 72" fill="none" stroke="var(--color-accent)" strokeWidth="3" filter="blur(1px)"/>
-          </svg>
+        {/* Large Smooth 3D Holographic AI & Orbital Scene */}
+        <div className="hero-3d-scene" aria-hidden="true">
+          <div className="orbit-system">
+            <div className="orbit-ring ring-1"></div>
+            <div className="orbit-ring ring-2"></div>
+            <div className="orbit-ring ring-3"></div>
+            <div className="orbit-glow-core"></div>
+          </div>
+
+          <div className="holo-card">
+            <div className="holo-card-inner">
+              <div className="holo-scan-beam"></div>
+              
+              <div className="holo-header">
+                <div className="holo-badge">
+                  <span className="holo-dot"></span>
+                  <span className="holo-badge-text">ATS MATCH: 99%</span>
+                </div>
+                <span className="holo-ai-tag">GROQ LLAMA 3.3</span>
+              </div>
+
+              <div className="holo-content">
+                <div className="holo-line line-title"></div>
+                <div className="holo-line line-sub"></div>
+                <div className="holo-spacer"></div>
+                <div className="holo-line line-full"></div>
+                <div className="holo-line line-long"></div>
+                <div className="holo-line line-med"></div>
+                <div className="holo-line line-short"></div>
+              </div>
+
+              <div className="holo-footer">
+                <div className="holo-pill">
+                  <span className="holo-check">✓</span>
+                  <span>Skills Aligned</span>
+                </div>
+                <div className="holo-pill">
+                  <span className="holo-check">✓</span>
+                  <span>Tailored Pitch</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="floating-satellite sat-top">
+              <Sparkles size={14} className="sat-icon" />
+              <span>AI Optimized</span>
+            </div>
+            <div className="floating-satellite sat-bottom">
+              <Target size={14} className="sat-icon" />
+              <span>ATS Friendly</span>
+            </div>
+          </div>
         </div>
 
         <div className="hero-content">
