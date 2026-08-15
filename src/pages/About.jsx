@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Sparkles, Code, Palette, BrainCircuit, Download, Shield, Mail, User, HeartHandshake } from 'lucide-react';
 import './About.css';
 
@@ -44,6 +45,11 @@ export default function About() {
 
   return (
     <div className="about-page">
+      <Helmet>
+        <title>About Letterly AI - The App & Developer</title>
+        <meta name="description" content="Learn about the technology stack behind Letterly AI, built with React and Groq AI, and get to know the developer." />
+        <link rel="canonical" href="https://letterly-ai.vercel.app/about" />
+      </Helmet>
       <div className="about-container">
         
         <section className="about-section">

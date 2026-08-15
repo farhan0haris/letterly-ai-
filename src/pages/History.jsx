@@ -4,6 +4,7 @@ import { useHistory } from '../context/HistoryContext';
 import { useToast } from '../context/ToastContext';
 import HistoryCard from '../components/HistoryCard';
 import { exportToPDF } from '../utils/pdfExport';
+import { Helmet } from 'react-helmet-async';
 import { History as HistoryIcon, Search, FileText, X, Copy, Download } from 'lucide-react';
 import './History.css';
 
@@ -40,6 +41,11 @@ export default function History() {
 
   return (
     <div className="history-page">
+      <Helmet>
+        <title>Your Cover Letters - Letterly AI</title>
+        <meta name="description" content="View and manage your previously generated cover letters." />
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <div className="history-container">
         <div className="history-header">
           <div>

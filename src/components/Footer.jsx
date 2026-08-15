@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import './Footer.css';
 
@@ -18,17 +19,20 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <div className="footer-copy">
-          &copy; 2025 Letterly AI. Built with ❤️ by Farhan Haris.
+        <div className="footer-left">
+          <div className="footer-copy">
+            &copy; {new Date().getFullYear()} Letterly AI. Built with ❤️ by Farhan Haris.
+          </div>
+          <div className="footer-links" style={{ display: 'flex', gap: '16px', marginTop: '8px', fontSize: '12px', color: 'var(--color-text-muted)' }}>
+            <Link to="/privacy" style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</Link>
+            <Link to="/terms" style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</Link>
+          </div>
         </div>
         <div className="footer-socials">
-          <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <a href="https://github.com/farhan0haris" target="_blank" rel="noreferrer" aria-label="GitHub">
             <GitHubSvg className="social-icon" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <LinkedInSvg className="social-icon" />
-          </a>
-          <a href="mailto:hello@example.com" aria-label="Email">
+          <a href="mailto:hello@example.com" aria-label="Email Contact">
             <Mail className="social-icon" size={20} />
           </a>
         </div>

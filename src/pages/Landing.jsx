@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Sparkles, Target, PenTool, Download, Smartphone, Shield, Star, ChevronDown } from 'lucide-react';
 import './Landing.css';
@@ -98,8 +99,32 @@ export default function Landing() {
     document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Letterly AI",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Generate perfectly tailored, ATS-friendly cover letters in seconds by matching your resume to the job description."
+  };
+
   return (
     <div className="landing-page">
+      <Helmet>
+        <title>Letterly AI - Generate Perfect Cover Letters with AI</title>
+        <meta name="description" content="Use Letterly AI to generate perfectly tailored, ATS-friendly cover letters in seconds. Land your dream job effortlessly." />
+        <link rel="canonical" href="https://letterly-ai.vercel.app/" />
+        <meta property="og:title" content="Letterly AI - Generate Perfect Cover Letters with AI" />
+        <meta property="og:description" content="Generate perfectly tailored, ATS-friendly cover letters in seconds." />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
       <section className="hero-section fade-in">
         <div className="hero-decor decor-1"></div>
         <div className="hero-decor decor-2"></div>

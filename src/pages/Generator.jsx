@@ -8,6 +8,7 @@ import ApiKeyModal from '../components/ApiKeyModal';
 import { generateCoverLetter } from '../services/gemini';
 import { WRITING_TONES, STORAGE_KEYS, DEFAULT_API_KEY } from '../utils/constants';
 import { getItem, setItem, removeItem } from '../utils/storage';
+import { Helmet } from 'react-helmet-async';
 import { Sparkles, Building2, Briefcase, FileText, MessageSquare, Loader2, RotateCcw, Link as LinkIcon } from 'lucide-react';
 import { playButtonSound, playSuccessSound } from '../utils/soundDesign';
 import './Generator.css';
@@ -198,6 +199,11 @@ export default function Generator() {
 
   return (
     <div className="generator-page">
+      <Helmet>
+        <title>AI Cover Letter Generator - Letterly AI</title>
+        <meta name="description" content="Generate a customized cover letter in seconds. Upload your resume, paste the job description, and let our AI do the writing." />
+        <link rel="canonical" href="https://letterly-ai.vercel.app/generator" />
+      </Helmet>
       {isGenerating && (
         <div className="hyperspace-overlay" aria-hidden="true">
           <div className="streak streak-1"></div>

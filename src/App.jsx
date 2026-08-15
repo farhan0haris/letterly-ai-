@@ -7,6 +7,9 @@ import Landing from './pages/Landing';
 import Generator from './pages/Generator';
 import History from './pages/History';
 import About from './pages/About';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -62,6 +65,9 @@ function App() {
           <Route path="/generator" element={<Generator />} />
           <Route path="/history" element={<History />} />
           <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
