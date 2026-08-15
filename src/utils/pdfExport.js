@@ -21,7 +21,7 @@ export const exportToPDF = (content, companyName = '', position = '', template =
 
   // Apply template styles
   if (template === 'modern') {
-    doc.setFillColor(37, 99, 235);
+    doc.setFillColor(10, 65, 116);
     doc.rect(0, 0, pageWidth, 8, 'F');
     yPos += 10;
   } else if (template === 'minimalist') {

@@ -113,13 +113,17 @@
   height: 56px;
   border-radius: 50%;
   background: var(--color-primary);
-  color: #111113;
+  color: #ffffff;
   font-weight: 700;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   letter-spacing: 1px;
+}
+
+[data-theme='dark'] .dev-avatar-glow {
+  color: #001D39;
 }
 
 .dev-name {
@@ -199,8 +203,8 @@
 }
 
 .email-icon {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38BDF8;
+  background: rgba(78, 142, 162, 0.15);
+  color: var(--color-accent);
 }
 
 .insta-icon {
