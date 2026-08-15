@@ -26,10 +26,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 80px 24px;
+  padding: 60px 0;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 48px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-decor {
@@ -71,46 +83,23 @@
    LARGE SMOOTH 3D HOLOGRAPHIC HERO SCENE
    ========================================================= */
 .hero-3d-scene {
-  position: absolute;
-  top: 50%;
-  right: 4%;
-  transform: translateY(-50%);
-  width: 520px;
-  height: 500px;
+  position: relative;
+  width: 100%;
+  height: 480px;
   perspective: 1200px;
   transform-style: preserve-3d;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@media (max-width: 1250px) {
-  .hero-3d-scene {
-    right: -2%;
-    width: 450px;
-    height: 440px;
-    opacity: 0.7;
-  }
-}
-
-@media (max-width: 950px) {
-  .hero-3d-scene {
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
-    width: 380px;
-    height: 380px;
-    opacity: 0.22;
-  }
-}
-
 /* 3D Orbiting Gyroscope System */
 .orbit-system {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
@@ -461,16 +450,69 @@
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 800px;
+  z-index: 2;
+  text-align: left;
+  max-width: 640px;
+  animation: heroEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid rgba(78, 142, 162, 0.3);
+  margin-bottom: 22px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(10, 65, 116, 0.08);
+}
+
+[data-theme='dark'] .hero-pill-badge {
+  color: var(--color-accent);
+  border-color: rgba(123, 189, 232, 0.25);
+  background: rgba(10, 43, 76, 0.5);
+  box-shadow: 0 2px 12px rgba(0, 10, 25, 0.3);
+}
+
+.badge-glow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.badge-sparkle {
+  color: var(--color-accent);
+  font-size: 13px;
 }
 
 .hero-heading {
   font-size: 3.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin-bottom: 24px;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .gradient-text {
@@ -481,23 +523,88 @@
 }
 
 .hero-subheading {
-  max-width: 580px;
-  margin: 0 auto 40px;
+  max-width: 560px;
+  margin: 0 0 32px 0;
   color: var(--color-text-muted);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  text-align: left;
 }
 
 .hero-buttons {
   display: flex;
   gap: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .btn-lg {
-  padding: 14px 32px;
+  padding: 14px 28px;
   font-size: 1rem;
+  border-radius: 14px;
+}
+
+/* Hero Left-Side Trust Row */
+.hero-trust-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px rgba(0, 29, 57, 0.04);
+  max-width: 560px;
+}
+
+[data-theme='dark'] .hero-trust-row {
+  background: rgba(10, 43, 76, 0.45);
+  border-color: rgba(78, 142, 162, 0.25);
+  box-shadow: 0 6px 24px rgba(0, 10, 25, 0.35);
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trust-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--color-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.trust-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.trust-text-group strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.trust-text-group span {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.trust-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--color-divider);
 }
 
 /* =========================================================
@@ -743,6 +850,37 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .hero-content {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-heading {
+    font-size: 2.75rem;
+    text-align: center;
+  }
+  .hero-subheading {
+    text-align: center;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .hero-trust-row {
+    justify-content: center;
+    margin: 0 auto;
+  }
+  .hero-3d-scene {
+    height: 420px;
+  }
   .features-grid, .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -750,10 +888,24 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 56px 24px;
+    padding: 48px 16px;
   }
   .hero-heading {
     font-size: 2.25rem;
+  }
+  .hero-trust-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    width: 100%;
+  }
+  .trust-divider {
+    display: none;
+  }
+  .hero-3d-scene {
+    height: 360px;
+    transform: scale(0.85);
   }
   .features-section, .testimonials-section, .faq-section {
     padding: 56px 0;
@@ -762,7 +914,7 @@
     grid-template-columns: 1fr;
   }
   .section-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
     margin-bottom: 32px;
   }
 }

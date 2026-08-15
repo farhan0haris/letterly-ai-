@@ -135,73 +135,115 @@ export default function Landing() {
         <div className="hero-decor decor-2"></div>
         <div className="hero-decor decor-3"></div>
 
-        {/* Large Smooth 3D Holographic AI & Orbital Scene */}
-        <div className="hero-3d-scene" aria-hidden="true">
-          <div className="orbit-system">
-            <div className="orbit-ring ring-1"></div>
-            <div className="orbit-ring ring-2"></div>
-            <div className="orbit-ring ring-3"></div>
-            <div className="orbit-glow-core"></div>
+        <div className="hero-container">
+          {/* Left Column: Rich Content, CTA & Trust Highlights */}
+          <div className="hero-content">
+            <div className="hero-pill-badge">
+              <span className="badge-glow-dot"></span>
+              <span>Next-Gen AI Cover Letter Builder</span>
+              <span className="badge-sparkle">✦</span>
+            </div>
+
+            <h1 className="hero-heading">
+              Write Better Cover Letters with <span className="gradient-text">AI</span>
+            </h1>
+
+            <p className="hero-subheading">
+              Upload your resume, paste the job description, and let Groq-powered AI craft a tailored, ATS-friendly cover letter in seconds.
+              {isMay4th && (
+                <span className="may-4th-text"> May the Force be with your career.</span>
+              )}
+            </p>
+
+            <div className="hero-buttons">
+              <Link to="/generator" className="btn btn-primary btn-lg">
+                <Sparkles size={18} /> Get Started Free
+              </Link>
+              <a href="#features" onClick={handleScrollToFeatures} className="btn btn-outline btn-lg">
+                Explore Features
+              </a>
+            </div>
+
+            {/* Left-Side Trust & Metric Highlights */}
+            <div className="hero-trust-row">
+              <div className="trust-item">
+                <div className="trust-icon-box">⚡</div>
+                <div className="trust-text-group">
+                  <strong>3-Second</strong>
+                  <span>Instant Output</span>
+                </div>
+              </div>
+              <div className="trust-divider"></div>
+              <div className="trust-item">
+                <div className="trust-icon-box">🎯</div>
+                <div className="trust-text-group">
+                  <strong>99% ATS</strong>
+                  <span>Pass Rate</span>
+                </div>
+              </div>
+              <div className="trust-divider"></div>
+              <div className="trust-item">
+                <div className="trust-icon-box">🔒</div>
+                <div className="trust-text-group">
+                  <strong>100% Private</strong>
+                  <span>Zero Server Storage</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="holo-card">
-            <div className="holo-card-inner">
-              <div className="holo-scan-beam"></div>
-              
-              <div className="holo-header">
-                <div className="holo-badge">
-                  <span className="holo-dot"></span>
-                  <span className="holo-badge-text">ATS MATCH: 99%</span>
-                </div>
-                <span className="holo-ai-tag">GROQ LLAMA 3.3</span>
-              </div>
-
-              <div className="holo-content">
-                <div className="holo-line line-title"></div>
-                <div className="holo-line line-sub"></div>
-                <div className="holo-spacer"></div>
-                <div className="holo-line line-full"></div>
-                <div className="holo-line line-long"></div>
-                <div className="holo-line line-med"></div>
-                <div className="holo-line line-short"></div>
-              </div>
-
-              <div className="holo-footer">
-                <div className="holo-pill">
-                  <span className="holo-check">✓</span>
-                  <span>Skills Aligned</span>
-                </div>
-                <div className="holo-pill">
-                  <span className="holo-check">✓</span>
-                  <span>Tailored Pitch</span>
-                </div>
-              </div>
+          {/* Right Column: Large Smooth 3D Holographic AI & Orbital Scene */}
+          <div className="hero-3d-scene" aria-hidden="true">
+            <div className="orbit-system">
+              <div className="orbit-ring ring-1"></div>
+              <div className="orbit-ring ring-2"></div>
+              <div className="orbit-ring ring-3"></div>
+              <div className="orbit-glow-core"></div>
             </div>
 
-            <div className="floating-satellite sat-top">
-              <Sparkles size={14} className="sat-icon" />
-              <span>AI Optimized</span>
-            </div>
-            <div className="floating-satellite sat-bottom">
-              <Target size={14} className="sat-icon" />
-              <span>ATS Friendly</span>
-            </div>
-          </div>
-        </div>
+            <div className="holo-card">
+              <div className="holo-card-inner">
+                <div className="holo-scan-beam"></div>
+                
+                <div className="holo-header">
+                  <div className="holo-badge">
+                    <span className="holo-dot"></span>
+                    <span className="holo-badge-text">ATS MATCH: 99%</span>
+                  </div>
+                  <span className="holo-ai-tag">GROQ LLAMA 3.3</span>
+                </div>
 
-        <div className="hero-content">
-          <h1 className="hero-heading">
-            Write Better Cover Letters with <span className="gradient-text">AI</span>
-          </h1>
-          <p className="hero-subheading">
-            Upload your resume, paste the job description, and let AI create a personalized ATS-friendly cover letter in seconds.
-            {isMay4th && (
-              <span className="may-4th-text"> May the Force be with your career.</span>
-            )}
-          </p>
-          <div className="hero-buttons">
-            <Link to="/generator" className="btn btn-primary btn-lg">Get Started</Link>
-            <a href="#features" onClick={handleScrollToFeatures} className="btn btn-outline btn-lg">Learn More</a>
+                <div className="holo-content">
+                  <div className="holo-line line-title"></div>
+                  <div className="holo-line line-sub"></div>
+                  <div className="holo-spacer"></div>
+                  <div className="holo-line line-full"></div>
+                  <div className="holo-line line-long"></div>
+                  <div className="holo-line line-med"></div>
+                  <div className="holo-line line-short"></div>
+                </div>
+
+                <div className="holo-footer">
+                  <div className="holo-pill">
+                    <span className="holo-check">✓</span>
+                    <span>Skills Aligned</span>
+                  </div>
+                  <div className="holo-pill">
+                    <span className="holo-check">✓</span>
+                    <span>Tailored Pitch</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="floating-satellite sat-top">
+                <Sparkles size={14} className="sat-icon" />
+                <span>AI Optimized</span>
+              </div>
+              <div className="floating-satellite sat-bottom">
+                <Target size={14} className="sat-icon" />
+                <span>ATS Friendly</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
