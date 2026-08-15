@@ -5,7 +5,7 @@ import { Sparkles, Target, PenTool, Download, Smartphone, Shield, Star, ChevronD
 import './Landing.css';
 
 const FeatureCard = ({ icon: Icon, title, description, delay }) => (
-  <div className="feature-card" style={{ transitionDelay: `${delay}ms` }}>
+  <div className="feature-card reveal-on-scroll" style={{ transitionDelay: `${delay}ms` }}>
     <div className="feature-icon-wrapper">
       <Icon className="feature-icon" size={24} />
     </div>
@@ -14,8 +14,8 @@ const FeatureCard = ({ icon: Icon, title, description, delay }) => (
   </div>
 );
 
-const TestimonialCard = ({ name, role, quote, initials }) => (
-  <div className="testimonial-card">
+const TestimonialCard = ({ name, role, quote, initials, delay }) => (
+  <div className="testimonial-card reveal-on-scroll" style={{ transitionDelay: `${delay}ms` }}>
     <div className="testimonial-header">
       <div className="avatar-circle">{initials}</div>
       <div className="stars">
@@ -30,10 +30,10 @@ const TestimonialCard = ({ name, role, quote, initials }) => (
   </div>
 );
 
-const FAQItem = ({ question, answer }) => {
+const FAQItem = ({ question, answer, delay }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className={`faq-item ${isOpen ? 'open' : ''}`} onClick={() => setIsOpen(!isOpen)}>
+    <div className={`faq-item reveal-on-scroll ${isOpen ? 'open' : ''}`} style={{ transitionDelay: `${delay}ms` }} onClick={() => setIsOpen(!isOpen)}>
       <div className="faq-question">
         <h3>{question}</h3>
         <ChevronDown className="faq-icon" size={20} />
@@ -56,15 +56,18 @@ export default function Landing() {
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add('is-visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { 
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-    const elements = document.querySelectorAll('.feature-card');
+    const elements = document.querySelectorAll('.reveal-on-scroll');
     elements.forEach(el => {
       if (observerRef.current) {
-         observerRef.current.observe(el);
+        observerRef.current.observe(el);
       }
     });
 
@@ -205,7 +208,7 @@ export default function Landing() {
 
       <section id="features" className="features-section">
         <div className="container">
-          <h2 className="section-title">Why Choose Letterly AI?</h2>
+          <h2 className="section-title reveal-on-scroll">Why Choose Letterly AI?</h2>
           <div className="features-grid">
             {features.map((feature, index) => (
               <FeatureCard key={index} {...feature} delay={index * 100} />
@@ -216,10 +219,10 @@ export default function Landing() {
 
       <section className="testimonials-section">
         <div className="container">
-          <h2 className="section-title">What People Say</h2>
+          <h2 className="section-title reveal-on-scroll">What People Say</h2>
           <div className="testimonials-grid">
             {testimonials.map((test, index) => (
-              <TestimonialCard key={index} {...test} />
+              <TestimonialCard key={index} {...test} delay={index * 120} />
             ))}
           </div>
         </div>
@@ -227,10 +230,10 @@ export default function Landing() {
 
       <section className="faq-section">
         <div className="container">
-          <h2 className="section-title">Frequently Asked Questions</h2>
+          <h2 className="section-title reveal-on-scroll">Frequently Asked Questions</h2>
           <div className="faq-list">
             {faqs.map((faq, index) => (
-              <FAQItem key={index} {...faq} />
+              <FAQItem key={index} {...faq} delay={index * 80} />
             ))}
           </div>
         </div>
