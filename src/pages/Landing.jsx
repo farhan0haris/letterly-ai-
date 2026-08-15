@@ -24,7 +24,7 @@ const TestimonialCard = ({ name, role, quote, initials }) => (
     </div>
     <p className="testimonial-quote">"{quote}"</p>
     <div className="testimonial-author">
-      <h4>{name}</h4>
+      <h3>{name}</h3>
       <span>{role}</span>
     </div>
   </div>
@@ -39,7 +39,9 @@ const FAQItem = ({ question, answer }) => {
         <ChevronDown className="faq-icon" size={20} />
       </div>
       <div className="faq-answer">
-        <p>{answer}</p>
+        <div className="faq-answer-inner">
+          <p>{answer}</p>
+        </div>
       </div>
     </div>
   );

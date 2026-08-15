@@ -135,7 +135,7 @@ const FileUpload = ({ onFileSelect, acceptedTypes = '.pdf,.docx,.txt' }) => {
         {!file && !isProcessing && (
           <div className="file-upload-content">
             <UploadCloud className="upload-icon" />
-            <h3 className="upload-main-text">Drag & drop your resume here</h3>
+            <h2 className="upload-main-text">Drag & drop your resume here</h2>
             <p className="upload-sub-text">or click to browse</p>
             <span className="upload-formats">Supported formats: {acceptedTypes.replace(/,/g, ', ')} (Max 10MB)</span>
           </div>
