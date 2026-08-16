@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { Sparkles, Target, PenTool, Download, Smartphone, Shield, Star, ChevronDown } from 'lucide-react';
+import ElasticMesh from '../components/ElasticMesh';
 import './Landing.css';
 
 const FeatureCard = ({ icon: Icon, title, description, delay }) => (
@@ -192,9 +193,28 @@ export default function Landing() {
             </div>
           </div>
 
-          {/* Right Column: Large Smooth 3D Holographic AI & Orbital Scene */}
-          <div className="hero-3d-scene" aria-hidden="true">
-            <div className="orbit-system">
+          {/* Right Column: Large Smooth 3D Holographic AI & Elastic Mesh Scene */}
+          <div className="hero-3d-scene">
+            <div className="hero-elastic-mesh-container">
+              <ElasticMesh 
+                color1="#0A4174" 
+                color2="#4E8EA2" 
+                gridColor="#7BBDE8"
+                highlight="#BDD8E9"
+                showGrid={true}
+                gridDensity={22}
+                gridOpacity={0.32}
+                interaction="hover"
+                tilt={15}
+                shading={0.65}
+                stiffness={0.06}
+                damping={0.22}
+                wobble={5}
+                borderRadius={24}
+              />
+            </div>
+
+            <div className="orbit-system" aria-hidden="true">
               <div className="orbit-ring ring-1"></div>
               <div className="orbit-ring ring-2"></div>
               <div className="orbit-ring ring-3"></div>

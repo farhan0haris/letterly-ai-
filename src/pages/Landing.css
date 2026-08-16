@@ -88,11 +88,27 @@
   height: 480px;
   perspective: 1200px;
   transform-style: preserve-3d;
-  pointer-events: none;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hero-elastic-mesh-container {
+  position: absolute;
+  width: 440px;
+  height: 380px;
+  border-radius: 24px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: auto;
+  cursor: grab;
+  filter: drop-shadow(0 20px 40px rgba(0, 29, 57, 0.35));
+  transition: transform 0.3s ease-out;
+}
+
+.hero-elastic-mesh-container:active {
+  cursor: grabbing;
 }
 
 /* 3D Orbiting Gyroscope System */
